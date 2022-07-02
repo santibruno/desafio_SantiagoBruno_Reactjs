@@ -1,26 +1,28 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import NavBar from './components/navBar'; 
+import NavBar from './components/NavBar'; 
+import InputGroup from './components/InputGroup'; 
+import List from './components/ItemList';
+import ItemListContainer from './components/ItemListContainer';
 
-function App() {
-  return (
+
+const App=()=> {
+  const TASKS = ['Tarea 1', 'Tarea 2', 'Tarea 3', 'Tarea 4', 'Tarea 5'];
+  const onAddTask = (str) => {
+    alert(str);
+  };  
+  return (    
     
     <div className="App">
-      <NavBar/>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar/>;
+      <ItemListContainer greeting={"Hola profe"} />;
+      <InputGroup
+        texto="Add from functional Component"
+        btnId="button-add"
+        onAddTask={onAddTask}
+      />      
+      
+      <List items={TASKS} />
     </div>
   );
 }

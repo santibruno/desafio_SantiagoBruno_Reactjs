@@ -1,3 +1,4 @@
+import CartWidget from './CartWidget.js';
 const NavBar =()=>{
 return(
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -27,11 +28,12 @@ return(
             <li><a class="dropdown-item" href="#">Contacto</a></li>
           </ul>
         </li>
-                
+        <CartWidget/>
       </ul>
-    </div>
+      
+    </div>   
    
-  </div>
+  </div>   
   
   
 </nav>
