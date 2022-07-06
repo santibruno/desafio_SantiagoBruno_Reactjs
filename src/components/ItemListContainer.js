@@ -5,7 +5,7 @@ const ItemListContainer=({greeting})=>{
     return(
         <div>
             {greeting}
-            <ItemCount stock={1} initial={0} onAdd={(n)=>alert (`Se agregaron ${n} al stock del producto`)}/>
+            <ItemCount stock={5} initial={1} onAdd={(n)=>alert (`Se agregaron ${n} Unidades al Carrito`)}/>
         </div>
     )
 };
