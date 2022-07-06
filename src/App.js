@@ -14,8 +14,8 @@ const App=()=> {
   return (    
     
     <div className="App">
-      <NavBar/>;
-      <ItemListContainer greeting={"Hola profe"} />;
+      <NavBar/>
+      <ItemListContainer greeting={"Hola profe"} />
       <InputGroup
         texto="Add from functional Component"
         btnId="button-add"
