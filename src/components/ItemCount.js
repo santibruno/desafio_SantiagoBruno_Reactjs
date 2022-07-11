@@ -19,9 +19,7 @@ const ItemCount = ({stock,initial,onAdd})=>{
             <button id='decremento' onClick={decremento}>Resta</button>
             <button onClick={()=>{
                 if (count<=stock){
-                    onAdd(count)
-                }else{
-                    alert("No hay suficiente stock")
+                    onAdd(count);
                 }
             }}>
                 Agregar al carrito
