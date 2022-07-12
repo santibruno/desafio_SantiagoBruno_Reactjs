@@ -6,7 +6,7 @@ import productos from '../products.json';
 const ItemListContainer=({})=>{
     return(
         <div>
-            <ItemList items={productos}/>
+            <ItemList items={productos}/>            
         </div>
     )
 };

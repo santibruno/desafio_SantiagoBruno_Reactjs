@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Item from "./Item";
 
 //import Dropdown from "react-bootstrap/Dropdown";
@@ -12,11 +12,17 @@ import Item from "./Item";
           <Dropdown.Item>Something else</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown> */
-const ItemList = ({ items }) => {
-  const [listLoading, setlistLoading] = useState([]);
-  useEffect(() => {
-    setTimeout(setlistLoading, 2000, false);
-  }, []);
+
+const ItemList = ({ items }) => {  
+  const [listLoading, setlistLoading] = useState(true);
+  new Promise((resolve,reject) => {
+    if (items){
+      resolve(setTimeout(setlistLoading,2000,false));
+    }else{
+      reject(console.log("error"));
+    }
+  })
+  
   return (
     <>
       {listLoading ? (
