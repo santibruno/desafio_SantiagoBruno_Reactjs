@@ -1,9 +1,7 @@
-import React,{ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Item from "./Item";
 
-
 import ItemDetailContainer from "./ItemDetailContainer";
-
 
 //import Dropdown from "react-bootstrap/Dropdown";
 /*<Dropdown>
@@ -17,43 +15,24 @@ import ItemDetailContainer from "./ItemDetailContainer";
         </Dropdown.Menu>
       </Dropdown> */
 
-const ItemList = () => {  
+const ItemList = () => {
   const [listLoading, setlistLoading] = useState(true);
-  
-  const [listDetails, setlistDetails] = useState(true);
   const [results, setResults] = useState([]);
-  useEffect(()=>{
-    fetch('https://dummyjson.com/products?limit=2')
-    .then(res => res.json())
-    .then(json => {
-      setResults(json.products)
-      setTimeout(() => {
-        setlistLoading(false)
+  useEffect(() => {
+    fetch("https://dummyjson.com/products?limit=2")
+      .then((res) => res.json())
+      .then((json) => {
+        setResults(json.products);
         setTimeout(() => {
-          setlistDetails(false)
+          setlistLoading(false);
         }, 2000);
-      }, 2000);
-      
-    }).catch(err=>console.log(err))
-},[]);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="display-flex row">
-      {listLoading ? (
-        <h2>CARGANDO...</h2>
-      ) : (
-            
-          <Item items={results}/>              
-        
-      )}
-      {listDetails ? (
-        <h3>CARGANDO Detalles...</h3>
-      ) : (
-          
-          results.map(elem=>
-            <ItemDetailContainer imagen={elem.images[0]} descr={elem.description} /> )            
-      )}
-
+      {listLoading ? <h2>CARGANDO...</h2> : <Item items={results} />}
     </div>
   );
 };
