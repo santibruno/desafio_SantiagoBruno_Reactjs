@@ -1,25 +1,14 @@
 import React from 'react';
 import './App.css';
-import NavBar from './components/NavBar'; 
-//import InputGroup from './components/InputGroup'; 
-//import List from './components/ItemList';
-import ItemListContainer from './components/ItemListContainer';
-import { useEffect, useState } from 'react';
-/*<InputGroup
-        texto="Add from functional Component"
-        btnId="button-add"
-        onAddTask={onAddTask}
-      />      
-      
-      <List items={TASKS} /> */
-
+import NavBar from './components/navBar/NavBar'; 
+import ItemListCatalogo from './components/ItemListCatalogo';
 const App=()=> {
 
   return (    
     
     <div className="App">
       <NavBar/>
-      <ItemListContainer />
+      <ItemListCatalogo />
       
     </div>
   );
