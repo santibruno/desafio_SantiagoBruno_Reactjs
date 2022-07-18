@@ -1,17 +1,18 @@
-import React from 'react';
-import './App.css';
-import NavBar from './components/navBar/NavBar'; 
-import ItemListCatalogo from './components/ItemListCatalogo';
-const App=()=> {
+import { Outlet } from "react-router-dom";
+import "./App.css";
+import NavBar from "./components/navBar/NavBar";
 
-  return (    
-    
-    <div className="App">
-      <NavBar/>
-      <ItemListCatalogo />
-      
-    </div>
-  );
+function App() {
+    return (
+        <div className="App2">
+           <NavBar/>
+            <main>
+                <Outlet />
+            </main>
+            <footer>
+                SOY UN FOOTER
+            </footer>
+        </div>
+    )
 }
-
 export default App;
