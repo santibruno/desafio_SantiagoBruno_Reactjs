@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
+      <div class="collapse navbar-collapse " id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <Link class="nav-link active" aria-current="page" to="/">Index</Link>
+          <li class="nav-item px-2">
+            <Link class="nav-link active" aria-current="page" to="/">Inicio</Link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item px-2">
             <Link class="nav-link active" aria-current="page" to="categorias">Categorias</Link>              </li>
 
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown px-2">
             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Nosotros
             </a>

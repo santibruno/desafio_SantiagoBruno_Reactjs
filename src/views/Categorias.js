@@ -21,12 +21,12 @@ const Categorias = () => {
             .catch(() => setErr("No hay Categorias Cargadas"));
     }, [params.id]);
     if (listLoading) {
-        return <span>CARGANDO...</span>;
+        return <span >CARGANDO...</span>;
 
     }
     return (
         console.log(data),
-        <div className="display-flex row">
+        <div className="display-flex row bg-dark">
             {err ? <span>{err}</span> : <ListCategorias items={data} />}
         </div>
     )
