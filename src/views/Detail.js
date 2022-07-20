@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Carrousel from '../components/Carrousel';
 import ItemCount from '../components/ItemCount';
 
@@ -7,15 +7,15 @@ const Detail = () => {
     let params = useParams();
     const [data, setData] = useState();
     const [err, setErr] = useState("");
+    const [cart, setCart] = useState(true);
+    const [msjStock, setMsjStock] = useState("");
 
     console.log(params)
-    function onAdd(c) {
-        document.getElementById("Stock").innerHTML = (`
-        
-        <h2>El producto fue agregado al carrito ${c} veces</h2>
-        
-        `
 
+    const onAdd=(c)=> {
+        setCart(false)
+        return (
+            setMsjStock(c)
         )
 
     }
@@ -42,8 +42,15 @@ const Detail = () => {
                         <h4 className='m-1 py-2 px-5 h3 border border-dark rounded'>${data.price}</h4>
                     </div>
                     <div className='d-flex justify-content-center ' >
-                        <div id='Stock'  className='m-1 p-2 border border-dark'>
-                            <ItemCount stock={data.stock} onAdd={onAdd} />
+                        <div className='m-1 p-2 border border-dark'>
+                            {cart ?
+                                (  
+                                    <ItemCount stock={data.stock} onAdd={onAdd} />
+                                ) : <div><h3>{data.title} fue ingresado {msjStock} veces al carrito</h3></div>
+
+
+                            }
+
                         </div>
                     </div>
                     <div className='d-flex justify-content-center h5'>
