@@ -12,7 +12,7 @@ const Detail = () => {
 
     console.log(params)
 
-    const onAdd=(c)=> {
+    const onAdd = (c) => {
         setCart(false)
         return (
             setMsjStock(c)
@@ -44,10 +44,16 @@ const Detail = () => {
                     <div className='d-flex justify-content-center ' >
                         <div className='m-1 p-2 border border-dark'>
                             {cart ?
-                                (  
+                                (
                                     <ItemCount stock={data.stock} onAdd={onAdd} />
-                                ) : <div><h3>{data.title} fue ingresado {msjStock} veces al carrito</h3></div>
+                                ) : (
+                                    <div><h3>{data.title} fue ingresado {msjStock} veces al carrito</h3>
+                                        <button className='btn btn-primary'>
+                                            <Link className='text-white' to={"/cart"}>Ir al carrito</Link>
+                                        </button>  
+                                    </div>
 
+                                )
 
                             }
 
