@@ -1,47 +1,16 @@
-import React, { useState } from "react";
+import React from 'react'
+import { Link } from "react-router-dom";
 
-import ItemDetailContainer from "./ItemDetailContainer";
+const Item = ({ id, name, image }) => {
+    return (
+        <div className="py-1 m-5 d-flex flex-column border w-50 ">
+            <img className=" img-responsive" src={image} alt={name} />
+            <div>
+                <Link to={"../products/" + id}>{name}</Link>
+            </div>
 
-const getItem = ({ btnImg, btnDescr }) => {
-  <ItemDetailContainer imagen={btnImg} descr={btnDescr} />;
-};
+        </div>
+    )
+}
 
-const Item = ({ items }) => {
-  const [listDetails, setlistDetails] = useState(true);
-  setTimeout(() => {
-    setlistDetails(false);
-  }, 2000);
-  return (
-    <div className="display-flex row">
-      {items.length ? (
-        items.map((el) => (
-          <div className="p-3 m-1 h3 card w-25 align-item-center" key={el.id}>
-            {el.title}
-            {listDetails ? (
-              <h3>CARGANDO Detalles...</h3>
-            ) : (
-              <ItemDetailContainer
-                imagen={el.images[0]}
-                descr={el.description}
-              />
-            )}
-            <button
-              onClick={() => {
-                //Esta linea de codigo no funciona y nose porque
-                getItem(el.images[0], el.description);
-              }}
-            >
-              Ver Detalles
-            </button>
-
-            <div id="imagenydescripcion"></div>
-          </div>
-        ))
-      ) : (
-        <h2>No Hay Resultados</h2>
-      )}
-    </div>
-  );
-};
-
-export default Item;
+export default Item

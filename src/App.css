@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-color: #282c34;
+  color: azure;
+  height: auto;
 }
 
 .App-logo {
@@ -35,4 +38,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+.carousel{
+  width: auto;
+  height: 400px;
 }

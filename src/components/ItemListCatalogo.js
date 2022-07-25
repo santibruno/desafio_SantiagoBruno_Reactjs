@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Item from "./Item";
 
-import ItemDetailContainer from "./ItemDetailContainer";
-
 //import Dropdown from "react-bootstrap/Dropdown";
 /*<Dropdown>
         <Dropdown.Toggle id="dropdown-basic">
