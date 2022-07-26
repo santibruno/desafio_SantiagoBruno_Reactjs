@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams } from "react-router-dom";
 import Carrousel from '../components/Carrousel';
 import ItemCount from '../components/ItemCount';
+import CartContext , {useCartContext} from '../components/CartContext';
 
 const Detail = () => {
     let params = useParams();
@@ -10,25 +11,27 @@ const Detail = () => {
     const [cart, setCart] = useState(true);
     const [msjStock, setMsjStock] = useState("");
 
-    console.log(params)
+    const {addItems}=useCartContext();
+    
 
+    useEffect(() => {
+        fetch("https://dummyjson.com/products/" + params.id)
+        .then((res) => res.json())
+        .then((json) => {
+            setData(json);            
+        })
+        .catch(() => setErr(err));
+    }, [params.id]);
+    
     const onAdd = (c) => {
+        addItems({id:data.id, title: data.title, price:data.price, quantity:c})
+        
         setCart(false)
         return (
             setMsjStock(c)
         )
 
     }
-    useEffect(() => {
-        fetch("https://dummyjson.com/products/" + params.id)
-            .then((res) => res.json())
-            .then((json) => {
-                setData(json);
-
-            })
-            .catch(() => setErr(err));
-    }, [params.id]);
-
     return (
         <div>
             {data && (
@@ -45,8 +48,11 @@ const Detail = () => {
                         <div className='m-1 p-2 border border-dark'>
                             {cart ?
                                 (
-                                    <ItemCount stock={data.stock} onAdd={onAdd} />
+                                    <ItemCount stock={data.stock} onAdd={onAdd}  />
+                                    
+
                                 ) : (
+                                    
                                     <div><h3>{data.title} fue ingresado {msjStock} veces al carrito</h3>
                                         <button className='btn btn-primary'>
                                             <Link className='text-white' to={"/cart"}>Ir al carrito</Link>
