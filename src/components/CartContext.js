@@ -4,7 +4,6 @@ const CartContext = createContext({});
 
 export const CartContextProvider = ({ children }) => {
   const [items, setItems] = useState([]);
-
   const addItems = ({ id, title, price, quantity }) => {    
     if (!isInCard(id)) {
       const _items = items.concat({ id, title, price, quantity });
@@ -28,7 +27,7 @@ export const CartContextProvider = ({ children }) => {
       return false;
     }
   };
-  
+
   return (
     <CartContext.Provider
       value={{
