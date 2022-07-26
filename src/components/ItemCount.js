@@ -1,10 +1,14 @@
 import { useState } from 'react';
+import { useCartContext } from './CartContext';
+
 
 const ItemCount = ({ stock, onAdd }) => {
-    const [count, setCount] = useState(0);
+    const {addItems, removeItem,clearCart,isInCart}=useCartContext();
+
+
+    const [count, setCount] = useState(1);
     const incremento = () => {
         if (count < stock) {
-
             setCount(count + 1);
         }
     };

@@ -1,20 +1,20 @@
 import { Outlet } from "react-router-dom";
-
+import { CartContextProvider } from "./components/CartContext";
 import "./App.css";
 import "./bootstrap.min.css";
 import NavBar from "./components/navBar/NavBar";
 
 function App() {
-    return (
-        <div className="App">
-           <NavBar/>
-            <main>
-                <Outlet />
-            </main>
-            <footer>
-                SOY UN FOOTER
-            </footer>
-        </div>
-    )
+  return (
+    <CartContextProvider >
+      <div className="App">
+        <NavBar />
+        <main>
+          <Outlet />
+        </main>
+        <footer>SOY UN FOOTER</footer>
+      </div>
+    </CartContextProvider>
+  );
 }
 export default App;
