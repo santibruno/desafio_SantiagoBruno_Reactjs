@@ -9,7 +9,12 @@ export const CartContextProvider = ({ children }) => {
       const _items = items.concat({ id, title, price, quantity });
       setItems(_items);
     }else{
+      const index = items.findIndex(i => i.id == id)
+      const _items=items.slice()
+      _items[index].quantity=_items[index].quantity+quantity
+      
       alert("el producto ya se encuentra agregado")
+      setItems(_items);
     }
   };
 
