@@ -43,3 +43,13 @@
   width: auto;
   height: 400px;
 }
+.badge{
+  font-size: .6rem;
+  position: absolute;
+  top: -6px;
+  right: -5px;
+  width: 15px;
+  height: 20px;
+  background-color: #f01212;
+  border-radius: 60%;
+}

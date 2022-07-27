@@ -1,9 +1,9 @@
-import CartContext, { useCartContext } from "../components/CartContext";
+import CartContext, { useCartContext } from "../context/CartContext";
 import CartItem from "../components/CartItem";
 
 const Cart = () => {
   
-  const { clearCart } = useCartContext(CartContext)
+  const { clearCart } = useCartContext();
   return (
     <CartContext.Consumer>
       {({ carrito: items }) => (

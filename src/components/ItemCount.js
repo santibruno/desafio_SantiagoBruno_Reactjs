@@ -1,9 +1,7 @@
 import { useState } from 'react';
-import { useCartContext } from './CartContext';
 
 
 const ItemCount = ({ stock, onAdd }) => {
-    const {addItems, removeItem,clearCart,isInCart}=useCartContext();
 
 
     const [count, setCount] = useState(1);
