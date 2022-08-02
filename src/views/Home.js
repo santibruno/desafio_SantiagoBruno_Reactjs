@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from "react";
 import List from "../components/ListItems";
+import { getProducts } from "../firebase";
 
 const Home = () => {
-  const [listLoading, setlistLoading] = useState(true);
   const [results, setResults] = useState([]);
   const [err, setErr] = useState("");
-  
-  useEffect(() => {
+  console.log ("productos",results)
+
+  useEffect(()=>{
+    getProducts().then(snapshot=>{
+      setResults(snapshot.docs.map((documento)=>{
+        
+        return{
+          id:documento.id,
+          ...documento.data()
+        }
+      }))
+    }).catch(() => setErr("Ocurrio un error"));
+  },[])
+  /*useEffect(() => {
     fetch("https://dummyjson.com/products")
       .then((res) => res.json())
       .then((json) => {
@@ -17,10 +29,8 @@ const Home = () => {
       })
       .catch(() => setErr("Ocurrio un error"));
   }, []);
-  if (listLoading) {
-    return <span>CARGANDO...</span>; 
+  */
 
-  }
   return (
     <div className="display-flex row">
       {err ? <span>{err}</span> : <List items={results} />}

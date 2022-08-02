@@ -3,6 +3,7 @@ import { CartContextProvider } from "./context/CartContext";
 import "./App.css";
 import "./bootstrap.min.css";
 import NavBar from "./components/navBar/NavBar";
+import "./firebase"
 
 function App() {
   return (

@@ -1,32 +1,39 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Item from '../components/Item';
+import Item from "../components/Item";
+import { getProductsByCategoryId } from "../firebase";
 
 const FilterCategory = () => {
-  let params = useParams();
+  const params = useParams();
   const [data, setData] = useState([]);
   const [err, setErr] = useState("");
 
   useEffect(() => {
-    fetch("https://dummyjson.com/products/category/" + params.id)
-      .then((res) => res.json())
-      .then((json) => {
-        setData(json.products);
-
-        console.log(json.products)
-      })
-      .catch(() => setErr(err));
+    getProductsByCategoryId(params.id).then((category) => {
+      setData(
+        category.docs.map((documento) => {
+          
+        console.log(documento.data());
+          return {
+            id: documento.id,
+            ...documento.data(),
+          };
+        })
+      );
+    });
   }, [params.id]);
 
-
   return (
-    <div>{data.length ? (
-        data.map((d) => <Item key={d.id} name={d.title} image={d.images[0]} id={d.id} />)
-        ) : (
-            <h3>No Hay Resultados</h3>
-)}
+    <div>
+      {data.length ? (
+        data.map((d) => (
+          <Item key={d.id} name={d.title} image={d.image} id={d.id} />
+        ))
+      ) : (
+        <h3>No Hay Resultados</h3>
+      )}
     </div>
-);
-}
+  );
+};
 
 export default FilterCategory;
